@@ -1,0 +1,13 @@
+image: alpine:latest
+pages:
+  stage: deploy
+  script:
+  - apk update && apk add ldoc
+  - ldoc -v -c docs/config.ld -d ../public -a .
+  - mkdir -p public/manual/docs
+  - cp docs/berry.svg public/manual/docs
+  artifacts:
+    paths:
+    - public
+  only:
+  - master

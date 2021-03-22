@@ -1,0 +1,22 @@
+-- Config file for ldoc
+project = "berry-libsox"
+description = "Berry bindings to libsox"
+dir = "docs" -- for compatibility with github pages
+-- allow links to upstream documentation
+local upat = "https://fossies.org/dox/sox-14.4.2/formats_8c.html"
+custom_see_handler('^(sox_[%w_]+)$',function(name)
+    local url = upat:format(name)
+    return name, url
+end)
+
+format='discount'
+-- backtick_references=false
+file={
+    '../be-libsox.c'
+}
+readme='../README.md'
+style='!pale'
+kind_names={topic='Manual',script='Programs'}
+examples = {
+    '../examples/example0.be'
+}
